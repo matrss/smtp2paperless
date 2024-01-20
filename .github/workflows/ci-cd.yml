@@ -9,6 +9,19 @@ on:
   pull_request:
 
 jobs:
+  lint:
+    name: Lint the code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install linters
+        run: pip install ruff
+      - run: ruff check
+      - run: ruff format --check
+
   build:
     name: Build python dists
     runs-on: ubuntu-latest
