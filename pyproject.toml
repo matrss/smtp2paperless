@@ -26,9 +26,9 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/unknown/smtp2paperless#readme"
-Issues = "https://github.com/unknown/smtp2paperless/issues"
-Source = "https://github.com/unknown/smtp2paperless"
+Documentation = "https://github.com/matrss/smtp2paperless#readme"
+Issues = "https://github.com/matrss/smtp2paperless/issues"
+Source = "https://github.com/matrss/smtp2paperless"
 
 [project.scripts]
 smtp2paperless = "smtp2paperless:main"
