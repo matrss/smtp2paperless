@@ -62,7 +62,7 @@ def run(args):
 
     if os.getenv("S2P_DISABLE_TLS") is None:
         ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-        ssl_context.load_cert_chain(certfile=args.cert_file, keyfile=args.key_file)
+        ssl_context.load_cert_chain(certfile=args.cert, keyfile=args.key)
     else:
         ssl_context = None
 
