@@ -29,7 +29,9 @@ class MessageToPaperlessHandler(aiosmtpd.handlers.Message):
         recipients = set(
             (e_p[2], e_p[0])
             for e in itertools.chain(
-                message.get_all("TO"), message.get_all("CC"), message.get_all("BCC")
+                message.get_all("TO") or [],
+                message.get_all("CC") or [],
+                message.get_all("BCC") or [],
             )
             if e != "" and (e_p := e.partition("@"))[2] in self.allowed_domains
         )
