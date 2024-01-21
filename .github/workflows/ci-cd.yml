@@ -18,9 +18,10 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install linters
-        run: pip install ruff
+        run: pip install reuse ruff
       - run: ruff check
       - run: ruff format --check
+      - run: reuse lint
 
   build:
     name: Build python dists
