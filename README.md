@@ -12,17 +12,17 @@ since that is the only relevant version of paperless today.
 
 ## What?
 
-A "SMTP to Paperless API" proxy.
+A "SMTP to Paperless API" bridge.
 You configure your document scanner to send scans as emails via SMTP to this software with a recipient of `<paperless-token>@<paperless-domain>`
-and the proxy will forward the attached scans to the Paperless API's document post endpoint of the chosen paperless instance.
+and the bridge will forward the attached scans to the Paperless API's document post endpoint of the chosen paperless instance.
 
-The proxy is stateless,
+The bridge is stateless,
 it simply looks at the recipient of the received message to determine where to post the document to.
-The paperless domain must be in a whitelist to be the target of the proxy
-(this is to stop anyone from abusing the proxy to send post requests to arbitrary domains,
+The paperless domain must be in a whitelist to be the target of the bridge
+(this is to stop anyone from abusing the bridge to send post requests to arbitrary domains,
 since there is no additional authentication happening).
 
-The proxy must be hosted with TLS to avoid leaking the Paperless API tokens send in the recipient fields.
+The bridge must be hosted with TLS to avoid leaking the Paperless API tokens send in the recipient fields.
 
 
 ## Why?
@@ -36,7 +36,7 @@ I didn't want to add a mailbox as a "man-in-the-middle" though
 since I would either have to self-host that or be fine with a third-party receiving all of my physical mail
 and other scans on top of my normal email.
 That seemed a bit unnecessary.
-So I built a simple "SMTP to Paperless API" proxy instead.
+So I built a simple "SMTP to Paperless API" bridge instead.
 
 
 ## How?
@@ -48,7 +48,7 @@ smtp2paperless --host <host> --port <port> --cert <cert-file> --key <key-file> -
 Make it a systemd service
 or do whatever else you do to run your services.
 
-Then configure your scanner to send mails via the SMTP proxy at your IP and chosen port.
+Then configure your scanner to send mails via the SMTP bridge at your IP and chosen port.
 No authentication required.
 
 Last,

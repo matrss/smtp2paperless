@@ -92,7 +92,9 @@ def ip_address(s):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="A proxy from SMTP to Paperless' API")
+    parser = argparse.ArgumentParser(
+        description="A bridge between SMTP and the Paperless API"
+    )
     parser.add_argument("--host", type=ip_address, required=True, help="IP to bind to")
     parser.add_argument("--port", type=int, required=True, help="port to bind to")
     if os.getenv("S2P_DISABLE_TLS") is None:
