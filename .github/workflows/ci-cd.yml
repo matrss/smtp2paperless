@@ -58,7 +58,7 @@ jobs:
         dist: ${{ fromJSON(needs.build.outputs.dists) }}
     steps:
       - name: Download all dists
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: python-dists
           path: dist/
@@ -82,7 +82,7 @@ jobs:
       id-token: write
     steps:
       - name: Download all dists
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: python-dists
           path: dist/
