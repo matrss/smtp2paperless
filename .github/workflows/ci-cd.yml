@@ -43,7 +43,7 @@ jobs:
           dists=$(find dist -type f -print0 | jq --raw-input --slurp --compact-output 'split("\u0000") | [ .[] | select(. != "") ]')
           echo "dists=$dists" >> "$GITHUB_OUTPUT"
       - name: Upload dist/ artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: python-dists
           path: dist/
@@ -58,7 +58,7 @@ jobs:
         dist: ${{ fromJSON(needs.build.outputs.dists) }}
     steps:
       - name: Download all dists
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: python-dists
           path: dist/
@@ -82,7 +82,7 @@ jobs:
       id-token: write
     steps:
       - name: Download all dists
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v8
         with:
           name: python-dists
           path: dist/
